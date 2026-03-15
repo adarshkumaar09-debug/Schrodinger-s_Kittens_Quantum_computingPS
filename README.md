@@ -34,3 +34,7 @@ $n < 4 + log_{360} (K_A K_G K_T K_C)$\
 $n < 4 + log_{360} (\frac{2^{l+1} - 1}{4})$\
 which simplifies to $n = O(l)$\
 So this is again a linear scaling and we do not have much advantage. The scaling factor fo $n$ is $\frac{ln2}{ln360}$, which means we can have the qubit number as around 12 % of the length of the character sequence.
+## Amplitude Encoding approach
+Instead of encoding that number in the phase we thought of doing so in the amplitude. But here we face two major problems: 
+1. Even if we encode the numbers as the amplitudes of the standard basis of the two qubit system, there is a normalisation factor that we cannot handle
+2. In the process of normalising and then decoding on the basis of statistical sampling a lot of sampling errors is introduced in the measured amplitudes, which renders it no good.
