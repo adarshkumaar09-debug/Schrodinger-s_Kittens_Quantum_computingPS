@@ -38,3 +38,5 @@ So this is again a linear scaling and we do not have much advantage. The scaling
 Instead of encoding that number in the phase we thought of doing so in the amplitude. But here we face two major problems: 
 1. Even if we encode the numbers as the amplitudes of the standard basis of the two qubit system, there is a normalisation factor that we cannot handle
 2. In the process of normalising and then decoding on the basis of statistical sampling a lot of sampling errors is introduced in the measured amplitudes, which renders it no good.
+## Our Final Approach
+The Final Approach was a compromise, to approach at the problem using a variational approach. We use Ansatz and COBYLA Optimization, to reach the target state closely, and to adjust the parameters. We use Measurement Mitigation, via the mthree library is used here to mathematically correct those measurement errors, essentially "cleaning" the data before we look at it. To reduce the time, we split the 50 characters into two 25-parters, and achieve a relatively good 95-96% fidelity. However, the depth variably changes here, and is not a perfect solution
