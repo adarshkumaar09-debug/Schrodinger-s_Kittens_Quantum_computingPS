@@ -19,7 +19,18 @@ We can do this to $K_1$ again and then on $K_2$ and so on unless the angle becom
 Let us try to solve this problem generally.\
 Consider a polynomial $p_n (x) = \sum_{i=0}^n a_i x^i$, this is also a number that can be written in base x (x is an integer), if we consider the coefficients $a_i$'s\
 Now, the maximum of the polynomial value is when the coefficients $a_i$'s are maximum, i.e., $a_i = x -1$. Then, \
-$p_n (x) _{max} = x^{n+1} - 1$\
+$p_n (x)\_{max} = x^{n+1} - 1$\
 Let us choose a suitable n, such that: $x^n \leq K < x^{n+1}$\
 We need only those many qubits that are required for the coefficients, which is $n+1$\
-So, number of qubits required is $= \ceil(log_x K)$
+So, number of qubits required is $= ceil(log_x K)$\
+Here for our case $x = 360$\
+Total number of qubits required will be $= \sum_X ceil(log_{360} K_X)$ , given X is in `{A, G, T, C}` \
+But there is a problem with this.The thing is, when we do some analysis with AM-GM inequality, \
+$\frac{K_A + K_G + K_T + K_C}{4} > (K_A K_G K_T K_C)^{\frac{1}{4}}$\
+and that since the binary sequences are mutually exclusive, thus $K_A + K_G + K_T + K_C = 2^{l+1} - 1$, where $l$ is the length of the character sequence, \
+then total number of qubits, $n = \sum_X ceil(log_{360} K_X)$\
+$n < \sum_X log_{360} K_X + 1$\
+$n < 4 + log_{360} (K_A K_G K_T K_C)$\
+$n < 4 + log_{360} (\frac{2^{l+1} - 1}{4})$\
+which simplifies to $n = O(l)$\
+So this is again a linear scaling and we do not have much advantage. The scaling factor fo $n$ is $\frac{ln2}{ln360}$, which means we can have the qubit number as around 12 % of the length of the character sequence.
